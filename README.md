@@ -2,7 +2,7 @@
 
 Одностраничный лендинг для вымышленной компании NORD CLEAN. Сервис химчистки, стирки и ухода за вещами с доставкой по Санкт-Петербургу.
 
-**Демо:** [chatorsn.github.io/nord_clean_landing](https://chatorsn.github.io/nord_clean_landing/)
+**Демо:** [chatorsn.github.io/nord_clean_landing]()https://chatorsn.github.io/nord_clean_landing/
 
 ---
 
