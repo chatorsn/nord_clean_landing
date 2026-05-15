@@ -1,0 +1,1699 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      NORD CLEAN — Химчистка и уход за вещами с доставкой по Санкт-Петербургу
+    </title>
+    <meta
+      name="description"
+      content="Профессиональная химчистка, стирка и уход за одеждой, обувью и текстилем с доставкой по Санкт-Петербургу. Заберём, обработаем и вернём вещи в удобное время."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+            colors: {
+              nord: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
+                950: "#082f49",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+      }
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #0ea5e9 0%,
+          #0284c7 50%,
+          #0369a1 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .glass-dark {
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .hero-bg {
+        background: linear-gradient(
+          135deg,
+          #f0f9ff 0%,
+          #e0f2fe 50%,
+          #f8fafc 100%
+        );
+      }
+      .card-hover {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 20px 40px -15px rgba(14, 165, 233, 0.15),
+          0 0 0 1px rgba(14, 165, 233, 0.1);
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.4);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .stagger-1 {
+        transition-delay: 0.1s;
+      }
+      .stagger-2 {
+        transition-delay: 0.2s;
+      }
+      .stagger-3 {
+        transition-delay: 0.3s;
+      }
+      .stagger-4 {
+        transition-delay: 0.4s;
+      }
+      .stagger-5 {
+        transition-delay: 0.5s;
+      }
+      .process-line {
+        position: absolute;
+        left: 24px;
+        top: 60px;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #0ea5e9, #e0f2fe);
+      }
+      @media (min-width: 768px) {
+        .process-line {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+      .faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s ease,
+          opacity 0.3s ease;
+        opacity: 0;
+      }
+      .faq-item.active .faq-content {
+        max-height: 500px;
+        opacity: 1;
+      }
+      .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+      }
+      .faq-icon {
+        transition: transform 0.3s ease;
+      }
+      .service-card {
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+        transform-origin: left;
+      }
+      .service-card:hover::after {
+        transform: scaleX(1);
+      }
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #0ea5e9;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        border-color: #0ea5e9;
+      }
+      .mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
+    </style>
+    <base target="_blank" />
+  </head>
+  <body class="text-slate-800 antialiased">
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200/50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+          <a href="#" class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 bg-gradient-to-br from-nord-400 to-nord-600 rounded-lg flex items-center justify-center"
+            >
+              <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight text-slate-900"
+              >NORD CLEAN</span
+            >
+          </a>
+          <div class="hidden lg:flex items-center gap-8">
+            <a
+              href="#about"
+              class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900"
+              >О компании</a
+            >
+            <a
+              href="#services"
+              class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900"
+              >Услуги</a
+            >
+            <a
+              href="#process"
+              class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900"
+              >Процесс</a
+            >
+            <a
+              href="#advantages"
+              class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900"
+              >Преимущества</a
+            >
+            <a
+              href="#faq"
+              class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900"
+              >FAQ</a
+            >
+            <a
+              href="#contacts"
+              class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900"
+              >Контакты</a
+            >
+          </div>
+          <div class="hidden lg:block">
+            <a
+              href="#form"
+              class="btn-primary px-5 py-2.5 rounded-full text-white text-sm font-semibold inline-flex items-center gap-2"
+            >
+              Оставить заявку
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+          <button
+            id="mobileMenuBtn"
+            class="lg:hidden p-2 rounded-lg hover:bg-slate-100"
+          >
+            <i data-lucide="menu" class="w-6 h-6 text-slate-700"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      id="mobileMenu"
+      class="mobile-menu fixed inset-0 z-50 bg-white lg:hidden"
+    >
+      <div class="flex flex-col h-full p-6">
+        <div class="flex justify-between items-center mb-8">
+          <span class="font-bold text-xl">NORD CLEAN</span>
+          <button
+            id="closeMobileMenu"
+            class="p-2 rounded-lg hover:bg-slate-100"
+          >
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+        <div class="flex flex-col gap-4">
+          <a
+            href="#about"
+            class="text-lg font-medium py-2 border-b border-slate-100"
+            >О компании</a
+          >
+          <a
+            href="#services"
+            class="text-lg font-medium py-2 border-b border-slate-100"
+            >Услуги</a
+          >
+          <a
+            href="#process"
+            class="text-lg font-medium py-2 border-b border-slate-100"
+            >Процесс</a
+          >
+          <a
+            href="#advantages"
+            class="text-lg font-medium py-2 border-b border-slate-100"
+            >Преимущества</a
+          >
+          <a
+            href="#faq"
+            class="text-lg font-medium py-2 border-b border-slate-100"
+            >FAQ</a
+          >
+          <a
+            href="#contacts"
+            class="text-lg font-medium py-2 border-b border-slate-100"
+            >Контакты</a
+          >
+        </div>
+        <div class="mt-auto">
+          <a
+            href="#form"
+            class="btn-primary w-full py-3 rounded-full text-white text-center font-semibold block"
+          >
+            Оставить заявку
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section
+      class="hero-bg relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden"
+    >
+      <div class="blob w-96 h-96 bg-nord-200 -top-20 -right-20"></div>
+      <div class="blob w-80 h-80 bg-blue-200 bottom-0 left-10"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="reveal">
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nord-50 border border-nord-200 text-nord-700 text-sm font-medium mb-6"
+            >
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              Работаем по Санкт-Петербургу
+            </div>
+            <h1
+              class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6"
+            >
+              Химчистка и уход за вещами с
+              <span class="gradient-text">доставкой</span> по Санкт-Петербургу
+            </h1>
+            <p
+              class="text-lg sm:text-xl text-slate-600 mb-8 leading-relaxed max-w-xl"
+            >
+              Заберём, аккуратно обработаем и вернём ваши вещи в удобное время.
+              Полный цикл ухода за одеждой, обувью и домашним текстилем.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 mb-8">
+              <a
+                href="#form"
+                class="btn-primary px-8 py-4 rounded-full text-white font-semibold text-center inline-flex items-center justify-center gap-2"
+              >
+                Оставить заявку
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#services"
+                class="px-8 py-4 rounded-full border-2 border-slate-300 text-slate-700 font-semibold hover:border-nord-400 hover:text-nord-600 transition-all text-center"
+              >
+                Наши услуги
+              </a>
+            </div>
+            <p class="text-sm text-slate-500 flex items-start gap-2">
+              <i data-lucide="info" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+              Менеджер свяжется с вами для уточнения состава заказа и удобного
+              времени доставки
+            </p>
+          </div>
+          <div class="reveal stagger-2 relative">
+            <div class="relative">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-nord-400 to-nord-600 rounded-3xl transform rotate-3 opacity-20"
+              ></div>
+              <div class="glass rounded-3xl p-8 shadow-2xl relative">
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="bg-white rounded-2xl p-4 shadow-sm">
+                    <div
+                      class="w-10 h-10 bg-nord-50 rounded-xl flex items-center justify-center mb-3"
+                    >
+                      <i data-lucide="shirt" class="w-5 h-5 text-nord-600"></i>
+                    </div>
+                    <p class="font-semibold text-slate-900">Одежда</p>
+                    <p class="text-xs text-slate-500 mt-1">
+                      Химчистка и стирка
+                    </p>
+                  </div>
+                  <div class="bg-white rounded-2xl p-4 shadow-sm">
+                    <div
+                      class="w-10 h-10 bg-nord-50 rounded-xl flex items-center justify-center mb-3"
+                    >
+                      <i
+                        data-lucide="footprints"
+                        class="w-5 h-5 text-nord-600"
+                      ></i>
+                    </div>
+                    <p class="font-semibold text-slate-900">Обувь</p>
+                    <p class="text-xs text-slate-500 mt-1">Чистка и уход</p>
+                  </div>
+                  <div class="bg-white rounded-2xl p-4 shadow-sm">
+                    <div
+                      class="w-10 h-10 bg-nord-50 rounded-xl flex items-center justify-center mb-3"
+                    >
+                      <i
+                        data-lucide="bed-double"
+                        class="w-5 h-5 text-nord-600"
+                      ></i>
+                    </div>
+                    <p class="font-semibold text-slate-900">Текстиль</p>
+                    <p class="text-xs text-slate-500 mt-1">Домашний текстиль</p>
+                  </div>
+                  <div class="bg-white rounded-2xl p-4 shadow-sm">
+                    <div
+                      class="w-10 h-10 bg-nord-50 rounded-xl flex items-center justify-center mb-3"
+                    >
+                      <i
+                        data-lucide="briefcase"
+                        class="w-5 h-5 text-nord-600"
+                      ></i>
+                    </div>
+                    <p class="font-semibold text-slate-900">Бизнес</p>
+                    <p class="text-xs text-slate-500 mt-1">
+                      Корпоративные заказы
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="mt-4 bg-gradient-to-r from-nord-50 to-blue-50 rounded-xl p-4 flex items-center gap-3"
+                >
+                  <div
+                    class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm"
+                  >
+                    <i data-lucide="truck" class="w-6 h-6 text-nord-600"></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-900">
+                      Бесплатная доставка
+                    </p>
+                    <p class="text-sm text-slate-500">
+                      Забор и возврат по городу
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal stagger-3"
+        >
+          <div
+            class="bg-white/60 backdrop-blur rounded-2xl p-4 border border-slate-200/50"
+          >
+            <p class="text-sm text-slate-600">
+              К нам обращаются, когда нужно привести в порядок повседневные
+              вещи, подготовить одежду к сезону или восстановить внешний вид
+              пальто и пуховика
+            </p>
+          </div>
+          <div
+            class="bg-white/60 backdrop-blur rounded-2xl p-4 border border-slate-200/50"
+          >
+            <p class="text-sm text-slate-600">
+              Освежить домашний текстиль, обработать деликатные ткани или
+              организовать регулярный уход за вещами
+            </p>
+          </div>
+          <div
+            class="bg-white/60 backdrop-blur rounded-2xl p-4 border border-slate-200/50"
+          >
+            <p class="text-sm text-slate-600">
+              Работаем с частными клиентами, семьями, владельцами дорогой
+              одежды, салонами и шоурумами
+            </p>
+          </div>
+          <div
+            class="bg-white/60 backdrop-blur rounded-2xl p-4 border border-slate-200/50"
+          >
+            <p class="text-sm text-slate-600">
+              Для каждого заказа подбирается подходящий формат: разовая
+              химчистка, регулярная стирка, срочная обработка или корпоративный
+              заказ
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-20 lg:py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6"
+          >
+            NORD CLEAN — аккуратный уход за вещами без лишних хлопот
+          </h2>
+          <p class="text-lg sm:text-xl text-slate-600">
+            Профессиональная химчистка, стирка и доставка в одном сервисе
+          </p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div class="reveal stagger-1">
+            <div class="bg-slate-50 rounded-3xl p-8 lg:p-10">
+              <p class="text-slate-700 leading-relaxed mb-6">
+                NORD CLEAN помогает клиентам экономить время и поддерживать вещи
+                в аккуратном состоянии. Мы организуем полный цикл работы:
+                принимаем заявку, уточняем состав заказа, забираем вещи,
+                подбираем подходящий способ обработки и возвращаем заказ клиенту
+                в согласованное время.
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-nord-100 flex items-center justify-center flex-shrink-0"
+                  >
+                    <i
+                      data-lucide="check-circle"
+                      class="w-5 h-5 text-nord-600"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-900">
+                      Полный цикл работы
+                    </p>
+                    <p class="text-sm text-slate-600">
+                      От приёма заявки до возврата готового заказа
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-nord-100 flex items-center justify-center flex-shrink-0"
+                  >
+                    <i
+                      data-lucide="check-circle"
+                      class="w-5 h-5 text-nord-600"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-900">
+                      Индивидуальный подход
+                    </p>
+                    <p class="text-sm text-slate-600">
+                      Учитываем тип ткани, цвет, степень загрязнения и пожелания
+                      клиента
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-nord-100 flex items-center justify-center flex-shrink-0"
+                  >
+                    <i
+                      data-lucide="check-circle"
+                      class="w-5 h-5 text-nord-600"
+                    ></i>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-900">
+                      Акцент на аккуратности
+                    </p>
+                    <p class="text-sm text-slate-600">
+                      Сохраняем внешний вид, форму и комфорт использования
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal stagger-2 space-y-6">
+            <div
+              class="bg-white border border-slate-200 rounded-2xl p-6 card-hover"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-8 h-8 rounded-lg bg-nord-50 flex items-center justify-center"
+                >
+                  <i data-lucide="search" class="w-4 h-4 text-nord-600"></i>
+                </div>
+                <h3 class="font-semibold text-slate-900">
+                  Индивидуальная оценка
+                </h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Каждый заказ рассматривается индивидуально. Мы учитываем тип
+                ткани, цвет, степень загрязнения, рекомендации производителя,
+                состояние фурнитуры и пожелания клиента. Такой подход особенно
+                важен для деликатных материалов, верхней одежды и дорогих
+                изделий.
+              </p>
+            </div>
+            <div
+              class="bg-white border border-slate-200 rounded-2xl p-6 card-hover"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-8 h-8 rounded-lg bg-nord-50 flex items-center justify-center"
+                >
+                  <i
+                    data-lucide="message-circle"
+                    class="w-4 h-4 text-nord-600"
+                  ></i>
+                </div>
+                <h3 class="font-semibold text-slate-900">
+                  Понятная коммуникация
+                </h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Сервис построен так, чтобы клиенту было понятно, что происходит
+                с заказом на каждом этапе. Менеджер уточняет детали,
+                предупреждает о возможных ограничениях по обработке и помогает
+                выбрать подходящий формат услуги.
+              </p>
+            </div>
+            <div
+              class="bg-white border border-slate-200 rounded-2xl p-6 card-hover"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <div
+                  class="w-8 h-8 rounded-lg bg-nord-50 flex items-center justify-center"
+                >
+                  <i data-lucide="package" class="w-4 h-4 text-nord-600"></i>
+                </div>
+                <h3 class="font-semibold text-slate-900">
+                  Аккуратная упаковка
+                </h3>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                После обработки вещи аккуратно упаковываются и возвращаются
+                клиенту. Наша задача — не просто очистить вещь, а сохранить её
+                внешний вид, форму и комфорт использования.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-20 lg:py-32 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6"
+          >
+            Уход за вещами под разные задачи
+          </h2>
+          <p class="text-lg text-slate-600">
+            От повседневной стирки до деликатной химчистки сложных изделий
+          </p>
+        </div>
+        <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto reveal">
+          NORD CLEAN работает с разными категориями вещей. Мы можем помочь с
+          регулярной стиркой и глажкой, сезонной химчисткой верхней одежды,
+          чисткой обуви, обработкой домашнего текстиля и корпоративными заказами
+          для небольших компаний.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="service-card bg-white rounded-2xl p-8 shadow-sm card-hover reveal stagger-1"
+          >
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-nord-100 to-nord-50 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="shirt" class="w-7 h-7 text-nord-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">
+              Химчистка одежды
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Подходит для пальто, курток, пуховиков, костюмов, платьев,
+              жакетов, юбок, брюк и других изделий, которые требуют
+              профессионального ухода. Перед обработкой мы оцениваем материал,
+              загрязнения, состояние подкладки, фурнитуры и декоративных
+              элементов.
+            </p>
+          </div>
+          <div
+            class="service-card bg-white rounded-2xl p-8 shadow-sm card-hover reveal stagger-2"
+          >
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-nord-100 to-nord-50 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="waves" class="w-7 h-7 text-nord-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">
+              Стирка и глажка
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Подходит для повседневной одежды, рубашек, футболок, постельного
+              белья, полотенец и домашнего текстиля. Формат удобен для занятых
+              клиентов и семей, которым важно регулярно получать чистые и
+              аккуратно сложенные вещи.
+            </p>
+          </div>
+          <div
+            class="service-card bg-white rounded-2xl p-8 shadow-sm card-hover reveal stagger-3"
+          >
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-nord-100 to-nord-50 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="footprints" class="w-7 h-7 text-nord-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">
+              Уход за обувью
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Включает чистку, обработку поверхности, восстановление аккуратного
+              внешнего вида и базовую подготовку к сезону. Мы работаем с
+              повседневной обувью и изделиями, которые требуют бережного
+              обращения.
+            </p>
+          </div>
+          <div
+            class="service-card bg-white rounded-2xl p-8 shadow-sm card-hover reveal stagger-1"
+          >
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-nord-100 to-nord-50 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i data-lucide="building-2" class="w-7 h-7 text-nord-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">
+              Корпоративные заказы
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Подходят салонам, студиям, шоурумам, офисам и другим небольшим
+              компаниям, которым нужен регулярный уход за текстилем, формой,
+              образцами одежды или вещами после мероприятий и съёмок.
+            </p>
+          </div>
+          <div
+            class="service-card bg-white rounded-2xl p-8 shadow-sm card-hover reveal stagger-2 lg:col-span-2"
+          >
+            <div class="flex flex-col sm:flex-row gap-6 items-start">
+              <div
+                class="w-14 h-14 bg-gradient-to-br from-nord-100 to-nord-50 rounded-2xl flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="truck" class="w-7 h-7 text-nord-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">
+                  Доставка вещей
+                </h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                  Курьер забирает вещи по согласованному адресу и возвращает
+                  заказ после обработки. Клиенту не нужно самостоятельно
+                  отвозить вещи в пункт приёма и подстраиваться под его график.
+                  Время забора и возврата согласуется индивидуально.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="process"
+      class="py-20 lg:py-32 bg-white relative overflow-hidden"
+    >
+      <div class="blob w-96 h-96 bg-nord-100 top-20 -right-48 opacity-30"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6"
+          >
+            Простой процесс от заявки до возврата вещей
+          </h2>
+          <p class="text-lg text-slate-600">
+            Понятная схема работы, чтобы клиент знал, что происходит с заказом
+          </p>
+        </div>
+        <div class="relative max-w-4xl mx-auto">
+          <div class="process-line hidden md:block"></div>
+          <div class="space-y-12">
+            <div
+              class="relative md:grid md:grid-cols-2 md:gap-8 items-center reveal"
+            >
+              <div class="md:text-right md:pr-12">
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover inline-block w-full"
+                >
+                  <div class="flex items-center gap-3 mb-3 md:justify-end">
+                    <h3 class="text-lg font-bold text-slate-900">Заявка</h3>
+                    <div
+                      class="w-10 h-10 rounded-full bg-nord-500 text-white flex items-center justify-center font-bold text-sm"
+                    >
+                      1
+                    </div>
+                  </div>
+                  <p class="text-slate-600 text-sm md:text-right">
+                    Клиент оставляет имя, телефон, выбирает тип услуги и может
+                    добавить комментарий: например, указать состав заказа,
+                    удобное время связи, адрес забора или особенности вещей.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden md:block"></div>
+              <div
+                class="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-6 w-4 h-4 bg-nord-500 rounded-full border-4 border-white shadow md:top-1/2 md:-translate-y-1/2 z-10"
+              ></div>
+            </div>
+            <div
+              class="relative md:grid md:grid-cols-2 md:gap-8 items-center reveal stagger-1"
+            >
+              <div class="hidden md:block"></div>
+              <div class="md:pl-12">
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover inline-block w-full"
+                >
+                  <div class="flex items-center gap-3 mb-3">
+                    <div
+                      class="w-10 h-10 rounded-full bg-nord-500 text-white flex items-center justify-center font-bold text-sm"
+                    >
+                      2
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">
+                      Уточнение деталей
+                    </h3>
+                  </div>
+                  <p class="text-slate-600 text-sm">
+                    Менеджер связывается с клиентом, уточняет состав заказа и
+                    помогает определить подходящий формат услуги. На этом этапе
+                    важно понять, какие вещи нужно обработать, есть ли
+                    срочность, требуется ли доставка.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-6 w-4 h-4 bg-nord-500 rounded-full border-4 border-white shadow md:top-1/2 md:-translate-y-1/2 z-10"
+              ></div>
+            </div>
+            <div
+              class="relative md:grid md:grid-cols-2 md:gap-8 items-center reveal stagger-2"
+            >
+              <div class="md:text-right md:pr-12">
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover inline-block w-full"
+                >
+                  <div class="flex items-center gap-3 mb-3 md:justify-end">
+                    <h3 class="text-lg font-bold text-slate-900">
+                      Забор вещей
+                    </h3>
+                    <div
+                      class="w-10 h-10 rounded-full bg-nord-500 text-white flex items-center justify-center font-bold text-sm"
+                    >
+                      3
+                    </div>
+                  </div>
+                  <p class="text-slate-600 text-sm md:text-right">
+                    Курьер забирает вещи по согласованному адресу. Клиенту не
+                    нужно ехать в пункт приёма. Если заказ большой или состоит
+                    из разных категорий вещей, менеджер может заранее уточнить,
+                    как лучше подготовить вещи к передаче.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden md:block"></div>
+              <div
+                class="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-6 w-4 h-4 bg-nord-500 rounded-full border-4 border-white shadow md:top-1/2 md:-translate-y-1/2 z-10"
+              ></div>
+            </div>
+            <div
+              class="relative md:grid md:grid-cols-2 md:gap-8 items-center reveal stagger-3"
+            >
+              <div class="hidden md:block"></div>
+              <div class="md:pl-12">
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover inline-block w-full"
+                >
+                  <div class="flex items-center gap-3 mb-3">
+                    <div
+                      class="w-10 h-10 rounded-full bg-nord-500 text-white flex items-center justify-center font-bold text-sm"
+                    >
+                      4
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Обработка</h3>
+                  </div>
+                  <p class="text-slate-600 text-sm">
+                    Специалисты оценивают изделия и проводят обработку. Для
+                    разных категорий вещей может использоваться разный подход:
+                    химчистка, стирка, глажка, чистка обуви, обработка текстиля
+                    или комбинированный уход.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-6 w-4 h-4 bg-nord-500 rounded-full border-4 border-white shadow md:top-1/2 md:-translate-y-1/2 z-10"
+              ></div>
+            </div>
+            <div
+              class="relative md:grid md:grid-cols-2 md:gap-8 items-center reveal stagger-4"
+            >
+              <div class="md:text-right md:pr-12">
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover inline-block w-full"
+                >
+                  <div class="flex items-center gap-3 mb-3 md:justify-end">
+                    <h3 class="text-lg font-bold text-slate-900">
+                      Возврат заказа
+                    </h3>
+                    <div
+                      class="w-10 h-10 rounded-full bg-nord-500 text-white flex items-center justify-center font-bold text-sm"
+                    >
+                      5
+                    </div>
+                  </div>
+                  <p class="text-slate-600 text-sm md:text-right">
+                    Когда заказ готов, вещи аккуратно упаковываются и
+                    возвращаются клиенту. Менеджер согласовывает удобное время
+                    доставки. Если по заказу есть особенности или ограничения по
+                    результату, клиент получает комментарий от сервиса.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden md:block"></div>
+              <div
+                class="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-6 w-4 h-4 bg-nord-500 rounded-full border-4 border-white shadow md:top-1/2 md:-translate-y-1/2 z-10"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="advantages" class="py-20 lg:py-32 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6"
+          >
+            Почему клиенты выбирают NORD CLEAN
+          </h2>
+          <p class="text-lg text-slate-600">
+            Удобство доставки, аккуратный подход и понятная коммуникация
+          </p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-start mb-16">
+          <div class="reveal">
+            <p class="text-slate-700 leading-relaxed mb-8">
+              Клиент может оставить заявку онлайн, согласовать время забора
+              вещей и получить готовый заказ обратно без поездок по городу. Это
+              особенно важно для занятых людей, семей с плотным графиком и
+              клиентов, которым нужно регулярно ухаживать за большим количеством
+              вещей.
+            </p>
+            <div class="space-y-6">
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="truck" class="w-6 h-6 text-nord-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-900 mb-1">
+                    Доставка по городу
+                  </h4>
+                  <p class="text-sm text-slate-600">
+                    Курьер забирает и возвращает вещи по согласованному адресу
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="user-check" class="w-6 h-6 text-nord-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-900 mb-1">
+                    Индивидуальный подход
+                  </h4>
+                  <p class="text-sm text-slate-600">
+                    К каждому заказу подбирается подходящий формат обработки
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0"
+                >
+                  <i data-lucide="gem" class="w-6 h-6 text-nord-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-900 mb-1">
+                    Работа с деликатными материалами
+                  </h4>
+                  <p class="text-sm text-slate-600">
+                    Особый уход за дорогими и требовательными изделиями
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal stagger-2 space-y-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0"
+                >
+                  <i
+                    data-lucide="package-check"
+                    class="w-6 h-6 text-nord-600"
+                  ></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-900 mb-1">
+                    Аккуратная упаковка
+                  </h4>
+                  <p class="text-sm text-slate-600">
+                    Вещи бережно упаковываются после обработки
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0"
+                >
+                  <i
+                    data-lucide="calendar-clock"
+                    class="w-6 h-6 text-nord-600"
+                  ></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-900 mb-1">
+                    Регулярное обслуживание
+                  </h4>
+                  <p class="text-sm text-slate-600">
+                    Возможность настроить постоянный уход за вещами
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center flex-shrink-0"
+                >
+                  <i
+                    data-lucide="message-square"
+                    class="w-6 h-6 text-nord-600"
+                  ></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-900 mb-1">
+                    Понятная коммуникация
+                  </h4>
+                  <p class="text-sm text-slate-600">
+                    Клиент всегда знает, что происходит с заказом на каждом
+                    этапе
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gradient-to-r from-nord-50 to-blue-50 rounded-2xl p-6 border border-nord-100"
+            >
+              <p class="text-slate-700 text-sm leading-relaxed">
+                <span class="font-semibold text-slate-900"
+                  >Мы внимательно относимся к составу заказа.</span
+                >
+                Для нас важно не обрабатывать все вещи одинаково, а учитывать
+                особенности материала, тип изделия, загрязнения и ожидаемый
+                результат. Такой подход помогает избежать лишних рисков и
+                сделать обслуживание более предсказуемым.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6"
+          >
+            Кому подойдут наши услуги
+          </h2>
+          <p class="text-lg text-slate-600">
+            Сервис для частных клиентов, семей, деловых людей и небольших
+            компаний
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-slate-50 rounded-2xl p-6 card-hover reveal stagger-1">
+            <div
+              class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4"
+            >
+              <i data-lucide="user" class="w-6 h-6 text-nord-600"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">Частные клиенты</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Для тех, кто хочет быстро и удобно привести в порядок одежду,
+              обувь или домашний текстиль: сезонная химчистка пальто, подготовка
+              вещей к поездке, уход за деликатным платьем, чистка пуховика или
+              регулярная стирка.
+            </p>
+          </div>
+          <div class="bg-slate-50 rounded-2xl p-6 card-hover reveal stagger-2">
+            <div
+              class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4"
+            >
+              <i data-lucide="users" class="w-6 h-6 text-nord-600"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">Семьи</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Сервис помогает разгрузить бытовые задачи. Постельное бельё,
+              полотенца, детские вещи, верхняя одежда, пледы и домашний текстиль
+              занимают много времени в уходе.
+            </p>
+          </div>
+          <div class="bg-slate-50 rounded-2xl p-6 card-hover reveal stagger-3">
+            <div
+              class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4"
+            >
+              <i data-lucide="briefcase" class="w-6 h-6 text-nord-600"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">Деловые клиенты</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Костюмы, рубашки, пальто, жакеты и другие вещи требуют регулярного
+              ухода, особенно если человек часто ездит на встречи, мероприятия
+              или работает в офисной среде.
+            </p>
+          </div>
+          <div class="bg-slate-50 rounded-2xl p-6 card-hover reveal stagger-4">
+            <div
+              class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4"
+            >
+              <i data-lucide="store" class="w-6 h-6 text-nord-600"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">Малый бизнес</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Салоны, шоурумы, фотостудии, офисы, организаторы мероприятий и
+              небольшие команды могут передавать в обработку образцы одежды,
+              текстиль после съёмок, рабочие комплекты.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-12 bg-gradient-to-r from-nord-50 to-blue-50 rounded-2xl p-8 text-center reveal"
+        >
+          <p class="text-slate-700">
+            <span class="font-semibold">Дополнительные сценарии:</span> сервис
+            может быть полезен перед важными событиями: свадьбами, фотосессиями,
+            деловыми мероприятиями, переездами, сезонной сменой гардероба или
+            подготовкой вещей к хранению.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-20 lg:py-32 bg-slate-50">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            Частые вопросы
+          </h2>
+          <p class="text-slate-600">
+            Ответы на популярные вопросы о нашем сервисе
+          </p>
+        </div>
+        <div class="space-y-4">
+          <div
+            class="faq-item bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden reveal"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between p-6 text-left"
+            >
+              <span class="font-semibold text-slate-900 pr-4"
+                >Как быстро забирают вещи после заявки?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-content px-6 pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Обычно курьер приезжает в тот же день или на следующий после
+                подтверждения заказа менеджером. Точное время согласовывается
+                индивидуально с учётом вашего графика.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden reveal"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between p-6 text-left"
+            >
+              <span class="font-semibold text-slate-900 pr-4"
+                >Можно ли отдать вещи с конкретными пятнами?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-content px-6 pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Да, при оформлении заявки укажите особенности вещей в
+                комментарии. Менеджер уточнит детали при звонке и предупредит,
+                какой результат можно ожидать. Мы честно объясняем, какие
+                загрязнения поддаются обработке, а какие могут остаться.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden reveal"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between p-6 text-left"
+            >
+              <span class="font-semibold text-slate-900 pr-4"
+                >Работаете ли вы с очень деликатными тканями?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-content px-6 pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Да, мы работаем с деликатными материалами, верхней одеждой и
+                дорогими изделиями. Перед обработкой оцениваем состояние вещи,
+                тип ткани и рекомендации производителя, чтобы подобрать
+                безопасный способ ухода.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden reveal"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between p-6 text-left"
+            >
+              <span class="font-semibold text-slate-900 pr-4"
+                >Есть ли возможность регулярного обслуживания?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-content px-6 pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Да, вы можете настроить регулярный уход за вещами. Это удобно
+                для семей, деловых клиентов и компаний. Условия регулярного
+                обслуживания обсуждаются с менеджером индивидуально.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden reveal"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between p-6 text-left"
+            >
+              <span class="font-semibold text-slate-900 pr-4"
+                >Какие районы Санкт-Петербурга вы обслуживаете?</span
+              >
+              <i
+                data-lucide="chevron-down"
+                class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0"
+              ></i>
+            </button>
+            <div class="faq-content px-6 pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Мы работаем по всему Санкт-Петербургу. Время забора и возврата
+                вещей согласуется индивидуально. Для больших заказов,
+                корпоративного обслуживания или регулярной обработки текстиля
+                условия можно обсудить отдельно.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="form" class="py-20 lg:py-32 bg-white relative overflow-hidden">
+      <div
+        class="blob w-96 h-96 bg-nord-100 -bottom-20 -left-20 opacity-30"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="reveal">
+            <h2
+              class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6"
+            >
+              Оставьте заявку на химчистку
+            </h2>
+            <p class="text-lg text-slate-600 mb-8">
+              Мы уточним состав заказа, сроки и удобное время доставки
+            </p>
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 text-nord-500 mt-0.5"
+                ></i>
+                <p class="text-slate-600 text-sm">
+                  Форма заявки простая — не нужно заполнять длинную анкету
+                </p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 text-nord-500 mt-0.5"
+                ></i>
+                <p class="text-slate-600 text-sm">
+                  Достаточно оставить контактные данные и выбрать тип услуги
+                </p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 text-nord-500 mt-0.5"
+                ></i>
+                <p class="text-slate-600 text-sm">
+                  Менеджер сам перезвонит для уточнения всех деталей
+                </p>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-2xl p-6">
+              <p class="text-sm text-slate-600 leading-relaxed">
+                После отправки заявки менеджер связывается с клиентом, уточняет
+                состав заказа, адрес, удобное время забора и возврата вещей.
+                Если клиент не уверен, какой тип обработки нужен, менеджер
+                помогает выбрать подходящий вариант.
+              </p>
+            </div>
+          </div>
+          <div class="reveal stagger-2">
+            <form
+              id="orderForm"
+              class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 lg:p-10"
+            >
+              <div class="space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-2"
+                    >Имя</label
+                  >
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Как к вам обращаться?"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 transition-all"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-2"
+                    >Телефон</label
+                  >
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phoneInput"
+                    required
+                    placeholder="+7 (999) 123-45-67"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 transition-all"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-2"
+                    >Тип услуги</label
+                  >
+                  <select
+                    name="service"
+                    required
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 bg-white transition-all"
+                  >
+                    <option value="">Выберите услугу</option>
+                    <option value="drycleaning">Химчистка одежды</option>
+                    <option value="wash">Стирка и глажка</option>
+                    <option value="shoes">Уход за обувью</option>
+                    <option value="corporate">Корпоративный заказ</option>
+                    <option value="other">Другое / не уверен</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-2"
+                    >Комментарий</label
+                  >
+                  <textarea
+                    name="comment"
+                    rows="3"
+                    placeholder="Состав заказа, удобное время, адрес или особенности вещей..."
+                    class="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 transition-all resize-none"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="btn-primary w-full py-4 rounded-xl text-white font-semibold text-lg"
+                >
+                  Отправить заявку
+                </button>
+                <p class="text-xs text-slate-500 text-center">
+                  Нажимая кнопку, вы соглашаетесь на обработку персональных
+                  данных
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="py-20 lg:py-32 bg-slate-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+            Свяжитесь с нами
+          </h2>
+          <p class="text-lg text-slate-300">
+            Мы на связи ежедневно и готовы ответить на вопросы по заказу
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div
+            class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 card-hover reveal stagger-1"
+          >
+            <div
+              class="w-12 h-12 bg-nord-500/20 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="phone" class="w-6 h-6 text-nord-400"></i>
+            </div>
+            <p class="text-sm text-slate-400 mb-1">Телефон</p>
+            <a
+              href="tel:+79991234567"
+              class="text-lg font-semibold hover:text-nord-400 transition-colors"
+              >+7 999 123-45-67</a
+            >
+          </div>
+          <div
+            class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 card-hover reveal stagger-2"
+          >
+            <div
+              class="w-12 h-12 bg-nord-500/20 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="mail" class="w-6 h-6 text-nord-400"></i>
+            </div>
+            <p class="text-sm text-slate-400 mb-1">Email</p>
+            <a
+              href="mailto:hello@nordclean.ru"
+              class="text-lg font-semibold hover:text-nord-400 transition-colors"
+              >hello@nordclean.ru</a
+            >
+          </div>
+          <div
+            class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 card-hover reveal stagger-3"
+          >
+            <div
+              class="w-12 h-12 bg-nord-500/20 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="map-pin" class="w-6 h-6 text-nord-400"></i>
+            </div>
+            <p class="text-sm text-slate-400 mb-1">Город</p>
+            <p class="text-lg font-semibold">Санкт-Петербург</p>
+          </div>
+          <div
+            class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 card-hover reveal stagger-4"
+          >
+            <div
+              class="w-12 h-12 bg-nord-500/20 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="clock" class="w-6 h-6 text-nord-400"></i>
+            </div>
+            <p class="text-sm text-slate-400 mb-1">График работы</p>
+            <p class="text-lg font-semibold">Ежедневно 9:00–21:00</p>
+          </div>
+        </div>
+        <div
+          class="bg-slate-800/30 rounded-2xl p-6 border border-slate-700 reveal"
+        >
+          <p class="text-slate-300 text-sm leading-relaxed text-center">
+            Если вы хотите уточнить возможность обработки конкретной вещи,
+            сроки, доставку или регулярное обслуживание, вы можете связаться с
+            NORD CLEAN по телефону или email. Также можно оставить заявку на
+            сайте, и менеджер сам перезвонит для уточнения деталей. Сервис
+            работает по Санкт-Петербургу. Время забора и возврата вещей
+            согласуется индивидуально. Для больших заказов, корпоративного
+            обслуживания или регулярной обработки текстиля условия можно
+            обсудить отдельно.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-slate-950 py-8 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <div class="flex items-center gap-2">
+            <div
+              class="w-6 h-6 bg-gradient-to-br from-nord-400 to-nord-600 rounded-md flex items-center justify-center"
+            >
+              <i data-lucide="sparkles" class="w-3 h-3 text-white"></i>
+            </div>
+            <span class="font-bold text-slate-300">NORD CLEAN</span>
+          </div>
+          <p class="text-sm text-slate-500">
+            Химчистка и уход за вещами с доставкой по Санкт-Петербургу
+          </p>
+          <p class="text-sm text-slate-600">© 2026 NORD CLEAN</p>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="successModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    >
+      <div
+        class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        id="modalOverlay"
+      ></div>
+      <div
+        class="relative bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform scale-95 opacity-0 transition-all duration-300"
+        id="modalContent"
+      >
+        <div class="text-center">
+          <div
+            class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <i data-lucide="check" class="w-8 h-8 text-green-600"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-2">
+            Заявка отправлена!
+          </h3>
+          <p class="text-slate-600 mb-6">
+            Менеджер свяжется с вами в ближайшее время для уточнения деталей
+            заказа.
+          </p>
+          <button
+            id="closeModal"
+            class="btn-primary px-8 py-3 rounded-full text-white font-semibold"
+          >
+            Отлично
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons();
+
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const closeMobileMenu = document.getElementById("closeMobileMenu");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      mobileMenuBtn.addEventListener("click", () =>
+        mobileMenu.classList.add("open"),
+      );
+      closeMobileMenu.addEventListener("click", () =>
+        mobileMenu.classList.remove("open"),
+      );
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () =>
+          mobileMenu.classList.remove("open"),
+        );
+      });
+
+      const phoneInput = document.getElementById("phoneInput");
+      phoneInput.addEventListener("input", function (e) {
+        let value = e.target.value.replace(/\D/g, "");
+        if (value.startsWith("7") || value.startsWith("8")) {
+          value = value.substring(1);
+        }
+        let formatted = "+7";
+        if (value.length > 0) {
+          formatted += " (" + value.substring(0, 3);
+        }
+        if (value.length >= 3) {
+          formatted += ") " + value.substring(3, 6);
+        }
+        if (value.length >= 6) {
+          formatted += "-" + value.substring(6, 8);
+        }
+        if (value.length >= 8) {
+          formatted += "-" + value.substring(8, 10);
+        }
+        e.target.value = formatted;
+      });
+
+      const orderForm = document.getElementById("orderForm");
+      const successModal = document.getElementById("successModal");
+      const modalContent = document.getElementById("modalContent");
+      const closeModal = document.getElementById("closeModal");
+      const modalOverlay = document.getElementById("modalOverlay");
+
+      orderForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        successModal.classList.remove("hidden");
+        successModal.classList.add("flex");
+        setTimeout(() => {
+          modalContent.classList.remove("scale-95", "opacity-0");
+          modalContent.classList.add("scale-100", "opacity-100");
+        }, 10);
+        orderForm.reset();
+      });
+
+      function hideModal() {
+        modalContent.classList.remove("scale-100", "opacity-100");
+        modalContent.classList.add("scale-95", "opacity-0");
+        setTimeout(() => {
+          successModal.classList.add("hidden");
+          successModal.classList.remove("flex");
+        }, 300);
+      }
+
+      closeModal.addEventListener("click", hideModal);
+      modalOverlay.addEventListener("click", hideModal);
+
+      document.querySelectorAll(".faq-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", function () {
+          const item = this.closest(".faq-item");
+          const isActive = item.classList.contains("active");
+          document
+            .querySelectorAll(".faq-item")
+            .forEach((i) => i.classList.remove("active"));
+          if (!isActive) {
+            item.classList.add("active");
+          }
+        });
+      });
+
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        },
+      );
+      revealElements.forEach((el) => revealObserver.observe(el));
+
+      const nav = document.querySelector("nav");
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 100) {
+          nav.classList.add("shadow-lg");
+        } else {
+          nav.classList.remove("shadow-lg");
+        }
+        lastScroll = currentScroll;
+      });
+    </script>
+  </body>
+</html>
